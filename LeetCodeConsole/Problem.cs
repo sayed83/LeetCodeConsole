@@ -19,7 +19,8 @@ namespace LeetCodeConsole
             List<int> merged = nums1.Concat(nums2).ToList();
             merged.Sort();
             int mid = merged.Count / 2;
-            if (merged.Count() % 2 != 0)
+            var m = merged.Count() % 2;
+            if (m != 0)
             {
                 return Convert.ToDouble(merged[mid]);
             }
@@ -28,6 +29,127 @@ namespace LeetCodeConsole
             double oMid = Convert.ToDouble((c + b) / 2.0);
 
             return oMid;
+        }
+
+        /// <summary>
+        /// 11. Container With Most Water
+        /// </summary>
+        public void MaxArea()
+        {
+            int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+            int max = 0;
+            int left = 0;
+            int right = height.Length - 1;
+            while (left < right)
+            {
+                int area = Math.Min(height[left], height[right]) * (right - left);
+                max = Math.Max(max, area);
+                if (height[left] < height[right])
+                {                    
+                    left++;
+                }
+                else
+                {
+                    right--;
+                }                
+            }
+            Console.WriteLine(max);
+        }
+
+        public IList<IList<int>> ThreeSum(int[] nums)
+        {
+            //this is where final result will live.
+            var reslist = new List<IList<int>>();
+            //sort the array so search is quicker
+            Array.Sort(nums);
+            var pre = 0; //keep track previous number
+            //start from end of array
+            for (var i = nums.Length - 1; i > 1; i--)
+            {
+                //if not at the start of loop and previous number equals to current number
+                //no need to continue, the triplet (if there is one) will be the same
+                if (i != nums.Length - 1 && nums[i] == pre)
+                {
+                    continue;
+                }
+                //calculate how many we still need to compose the triplet
+                var remain = 0 - nums[i];
+                //update the previous number
+                pre = nums[i];
+                //the previous tracking for inner loop
+                var prev = 0;
+                for (var j = i - 1; j > 0; j--)
+                {
+                    //same as outer loop, if number is same
+                    //would yield same triplet, skip it.
+                    if (j != i - 1 && nums[j] == prev)
+                    {
+                        continue;
+                    }
+                    //calculate the last number needed
+                    var last = remain - nums[j];
+                    //update the previous
+                    prev = nums[j];
+                    //binary search the last number
+                    var exist = Array.BinarySearch<int>(nums, 0, j, last);
+                    //if found add the triplet
+                    if (exist >= 0)
+                    {
+                        reslist.Add(new List<int>() { nums[i], nums[j], last });
+                    }
+                }
+            }
+            foreach (var item in reslist)
+            {
+                Console.WriteLine(item);
+            }
+            
+            return reslist;
+        }
+
+        public IList<IList<int>> ThreeSum1(int[] nums)
+        {
+
+            List<IList<int>> res = new List<IList<int>>();
+            if (nums == null || nums.Length < 3)
+                return res;
+
+            Array.Sort(nums);
+            for (int i = 0; i < nums.Length - 2; i++)
+            {
+                // If nums[i] > 0, we can't find a valid triplet, since nums is sorted and nums[i] the smallest number.
+                // To avoid duplicate triplets, we should skip nums[i] if nums[i] == nums[i-1]
+                if (nums[i] > 0 || (i > 0 && nums[i] == nums[i - 1]))
+                    continue;
+
+                int left = i + 1, right = nums.Length - 1;
+                while (left < right)
+                {
+                    if (nums[i] + nums[left] + nums[right] == 0)
+                    {
+                        res.Add(new List<int>() { nums[i], nums[left], nums[right] });
+                        left++;
+                        right--;
+
+                        while (left < right && nums[left] == nums[left - 1])
+                            left++;
+                        while (left < right && nums[right] == nums[right + 1])
+                            right--;
+                    }
+                    else if (nums[i] + nums[left] + nums[right] > 0)
+                        right--;
+                    else
+                        left++;
+                }
+            }
+            foreach (var item in res)
+            {
+                foreach (var i in item)
+                {
+                    Console.WriteLine(i);
+                }
+            }            
+            return res;
         }
 
         public void GenarateRendomNumber(int minnum, int maxnum)
