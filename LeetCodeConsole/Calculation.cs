@@ -76,16 +76,7 @@ namespace LeetCodeConsole
             return voltage * current;
         }
 
-        public static string smallerNum(string n1, string n2)
-        {
-            // 100 % not ok
-            var num = string.Compare(n1, n2);
-            if (string.Compare(n1, n2) == 0) return n2;
-            if (string.Compare(n1, n2) < 0) return n1;
-            if (string.Compare(n1, n2) > 0) return n2;
-            return "";
-
-        }
+        
 
         public static int Addition(int num)
         {

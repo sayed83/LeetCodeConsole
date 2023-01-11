@@ -7,12 +7,47 @@ namespace LeetCodeConsole
     
     public class Program
     {
+        public static int[] CountFrequencies(string[] words)
+        {
+            // Write your code here
+            // To debug: Console.Error.WriteLine("Debug messages...");
+
+            return null;
+        }
+        public static int LuckyMoney(int money, int giftees)
+        {
+            // Write your code here
+            // To debug: Console.Error.WriteLine("Debug messages...");
+            for (int i = 0;money < 100; i++)
+            {
+
+            }
+            return -1;
+        }
+
+        public static string AreaOfCircle(double R)
+        {
+            var n = 3.14159;
+            double A = 0;
+            A = n * (R * R);
+            //return A.ToString("n4");
+            return A.ToString("f4");
+        }
         static void Main(string[] args)
         {
+            Console.WriteLine(AreaOfCircle(100.64));
+            //string[] words = { "the","dog","got","the","got" };
+            //CountFrequencies(words);
+
+            //LuckyMoney(12,2);
             //var second = Calculation.HowManySeconds(2);
             //var str = Calculation.smallerNum("12", "21");
             //Calculation.Addition(0);
-            Console.WriteLine(Calculation.CalculateExponent(5,5));
+            //Console.WriteLine(Calculation.CalculateExponent(5,5));
+            //var result = edabit_challenges.smallerNum("16","1500");
+            //Console.WriteLine(result);
+            //Console.WriteLine(edabit_challenges.Factorial(5));
+            //Console.WriteLine(edabit_challenges.triArea(7,4));
             //Calculation cal = new Calculation();
             //Calculation.lessThan100(32, 45);
             //Customer[] customer = new Customer[3];
@@ -106,7 +141,7 @@ namespace LeetCodeConsole
             //};        
 
             // Convertion convertion = new Convertion();
-            
+
             //var result = convertion.RomanToInt("IXL");
             //var result = convertion.IntToRoman1(Convert.ToInt32(input));
 
