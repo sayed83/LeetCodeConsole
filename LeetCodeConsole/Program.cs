@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace LeetCodeConsole
 {
-    
+
     public class Program
     {
         public static int[] CountFrequencies(string[] words)
@@ -18,7 +19,7 @@ namespace LeetCodeConsole
         {
             // Write your code here
             // To debug: Console.Error.WriteLine("Debug messages...");
-            for (int i = 0;money < 100; i++)
+            for (int i = 0; money < 100; i++)
             {
 
             }
@@ -35,7 +36,23 @@ namespace LeetCodeConsole
         }
         static void Main(string[] args)
         {
-            Console.WriteLine(AreaOfCircle(100.64));
+            int[] nums = { 1, 7, 3, 6, 5, 6 };
+            var result = LeetCodes.PivotIndex(nums);
+            //var result = LeetCodes.RunningSum(nums);
+            //int[] nums = { 1, 2, 3, 4, 5, 6, 7 }; int k = 3;
+            //int[] nums = { -1, -100, 3, 99 }; int k = 2;
+            //LeetCodes.Rotate(nums, k);
+            //int[] nums = { 2, 7, 11, 15 };
+            //int[] arr = new int[] { 1, 4, 3,2 };
+            //HackerRank.reverseArray(arr.ToList());
+            //int targets = 18;
+            //var index = LeetCodes.twoSum(nums, targets);
+            //for (int i = 0; i < index.Length; i++)
+            //{
+            //    Console.WriteLine(index[i]);
+            //}
+
+            //Console.WriteLine(AreaOfCircle(100.64));
             //string[] words = { "the","dog","got","the","got" };
             //CountFrequencies(words);
 
