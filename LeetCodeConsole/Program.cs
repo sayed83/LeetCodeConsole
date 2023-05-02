@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace LeetCodeConsole
 {
@@ -25,7 +28,31 @@ namespace LeetCodeConsole
             }
             return -1;
         }
+        public static List<double> DivideLuckyMoney(double totalAmount, int numPeople, double minAmount)
+        {
+            if (numPeople * minAmount > totalAmount)
+            {
+                return null; // not enough money to distribute
+            }
 
+            var rand = new Random();
+            var result = new List<double>(numPeople);
+
+            for (int i = 0; i < numPeople; i++)
+            {
+                double remainingAmount = totalAmount - (numPeople - i) * minAmount;
+                double maxAmount = remainingAmount / (numPeople - i);
+                double amount = rand.NextDouble() * (maxAmount - minAmount) + minAmount;
+                result.Add(amount);
+                totalAmount -= amount;
+                Console.WriteLine(amount);
+            }            
+            return result;
+        }
+        public class result
+        {
+            public int Number { get; set; }
+        }
         public static string AreaOfCircle(double R)
         {
             var n = 3.14159;
@@ -34,10 +61,50 @@ namespace LeetCodeConsole
             //return A.ToString("n4");
             return A.ToString("f4");
         }
+
+        public void First()
+        {
+           var fast = "excuting first function";
+        }
         static void Main(string[] args)
         {
-            int[] nums = { 1, 7, 3, 6, 5, 6 };
-            var result = LeetCodes.PivotIndex(nums);
+            var result = DivideLuckyMoney(200000, 20, 320);
+            // C# Middleware Tutorial //
+
+
+
+            //result result = new result();
+            //SemaphoreSlim f1 = new(1);
+            //SemaphoreSlim f2 = new(1);
+
+            //while(true)
+            //{
+            //    var t1 = Task.Run(async () =>
+            //    {
+            //        await f1.WaitAsync();
+            //        await Task.Delay(1000);
+            //        await f2.WaitAsync();
+            //        result.Number++;
+            //    });
+            //    var t2 = Task.Run(async () =>
+            //    {
+            //        await f1.WaitAsync();
+            //        await Task.Delay(1000);
+            //        await f2.WaitAsync();
+            //        result.Number++;
+            //    });
+            //    Console.WriteLine(result.Number);
+            //}
+
+
+            //LeetCodes.MergeTwoLists();
+
+            //string s = "paper", t = "title";
+            //LeetCodes.IsIsomorphic(s, t);
+            //string s = "ab#c", t = "ad#c";
+            //LeetCodes.BackspaceCompare1(s, t);
+            //int[] nums = { 1, 7, 3, 6, 5, 6 };
+            //var result = LeetCodes.PivotIndex(nums);
             //var result = LeetCodes.RunningSum(nums);
             //int[] nums = { 1, 2, 3, 4, 5, 6, 7 }; int k = 3;
             //int[] nums = { -1, -100, 3, 99 }; int k = 2;
