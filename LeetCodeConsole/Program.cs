@@ -15,8 +15,29 @@ namespace LeetCodeConsole
         {
             // Write your code here
             // To debug: Console.Error.WriteLine("Debug messages...");
+            var freqMap = new Dictionary<string, int>();
 
-            return null;
+            foreach (var word in words)
+            {
+                if (freqMap.ContainsKey(word))
+                {
+                    freqMap[word]++;
+                }
+                else
+                {
+                    freqMap.Add(word, 1);
+                }
+            }
+
+            var result = new int[freqMap.Count];
+            int i = 0;
+
+            foreach (var kvp in freqMap)
+            {
+                result[i++] = kvp.Value;
+            }
+
+            return result;
         }
         public static int LuckyMoney(int money, int giftees)
         {
